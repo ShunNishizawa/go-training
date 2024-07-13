@@ -1,0 +1,14 @@
+version: '3' # composeファイルのバージョン
+services:
+  training: # サービス名
+    container_name: training
+    build: # ビルドに使うDockerファイルのパス
+      context: .
+      dockerfile: ./build/Dockerfile
+    volumes: # マウントディレクトリ
+      - ./training:/go/src/github.com/training
+    tty: true # コンテナの永続化
+    env_file: # .envファイル
+      - ./build/.go_env
+    environment:
+      - TZ=Asia/Tokyo
