@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
 func SelectTraining(c, quit chan int) {
 	// selectは、複数のチャネルの処理を待ち受ける
@@ -17,6 +20,10 @@ func SelectTraining(c, quit chan int) {
 		case <-quit:
 			fmt.Println("quit")
 			return
+		default:
+			fmt.Println("default")
+			time.Sleep(50 * time.Millisecond)
 		}
+		
 	}
 }
