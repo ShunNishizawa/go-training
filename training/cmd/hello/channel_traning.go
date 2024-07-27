@@ -12,12 +12,12 @@ func ChannelTraining() {
 	// チャネルは、データを送受信するためのパイプのようなものです。
 	// データは、チャネルを介して送信され、受信されます。
 	// チャネルは、make(chan 型) で作成します。
-	messages := make(chan string)
+	messages := make(chan string,1)
 
 	// 以下のコードは、goroutine を使って、メッセージを送信しています。
 	go func() { messages <- "ping" }()
 
 	// メイン関数は、メッセージを受信するためにブロックされます。
 	msg := <- messages
-	fmt.Println(msg)
+	fmt.Println("msg:",msg)
 }
